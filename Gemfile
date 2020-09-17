@@ -47,4 +47,5 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data'
 
+# https://github.com/bkeepers/dotenv/
 gem 'dotenv-rails', groups: [:development, :test]
