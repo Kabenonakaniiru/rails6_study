@@ -17,7 +17,7 @@ default: &default
   host: <%= ENV['RAILS6_DATABASE_SUDY_HOST'] %>
   username: <%= ENV['RAILS6_STUDY_DATABASE_USER'] %>
   password: <%= ENV['RAILS6_STUDY_DATABASE_PASSWORD'] %>
-  # socket: /tmp/mysql.sock
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
