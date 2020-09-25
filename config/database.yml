@@ -13,9 +13,10 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  # connect user, pass, host, port, database, socket, flags, conn_attrs
+  username: <%= ENV['RAILS6_STUDY_DATABASE_USER'] %>
+  password: <%= ENV['RAILS6_STUDY_DATABASE_PASSWORD'] %>
+  # socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -50,5 +51,5 @@ test:
 production:
   <<: *default
   database: rails6_study_production
-  username: rails6_study
+  username: <%= ENV['RAILS6_STUDY_DATABASE_USER'] %>
   password: <%= ENV['RAILS6_STUDY_DATABASE_PASSWORD'] %>
