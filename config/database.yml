@@ -14,6 +14,7 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   # connect user, pass, host, port, database, socket, flags, conn_attrs
+  host: <%= ENV['RAILS6_DATABASE_SUDY_HOST'] %>
   username: <%= ENV['RAILS6_STUDY_DATABASE_USER'] %>
   password: <%= ENV['RAILS6_STUDY_DATABASE_PASSWORD'] %>
   # socket: /tmp/mysql.sock
