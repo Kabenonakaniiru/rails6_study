@@ -58,3 +58,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # paging
 gem 'kaminari'
+
+# auth
+gem 'devise'
