@@ -38,6 +38,8 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
+  # N+1検知用
+  gem 'bullet'
 end
 
 group :test do
@@ -53,3 +55,6 @@ gem 'tzinfo-data'
 
 # https://github.com/bkeepers/dotenv/
 gem 'dotenv-rails', groups: [:development, :test]
+
+# paging
+gem 'kaminari'
