@@ -62,3 +62,4 @@ gem 'kaminari'
 
 # auth
 gem 'devise'
+gem 'omniauth'
