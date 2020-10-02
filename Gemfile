@@ -69,3 +69,7 @@ gem 'slim-rails'
 
 # ERB形式のファイルをslim形式に変換してくれる
 gem 'html2slim'
+
+# Styles
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'font-awesome-sass-rails', '~> 3.0', '>= 3.0.2.2'
