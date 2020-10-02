@@ -63,3 +63,9 @@ gem 'kaminari'
 # auth
 gem 'devise'
 gem 'omniauth'
+
+# slim generator
+gem 'slim-rails'
+
+# ERB形式のファイルをslim形式に変換してくれる
+gem 'html2slim'
