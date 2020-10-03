@@ -18,9 +18,19 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
-    config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+    # config.cache_store = :memory_store
+    # see https://railsguides.jp/caching_with_rails.html
+    config.cache_store = :redis_cache_store, {
+      url: ENV['REDIS_URL'],
+      connect_timeout:    30,  # Defaults to 20 seconds
+      read_timeout:       0.2, # Defaults to 1 second
+      write_timeout:      0.2, # Defaults to 1 second
+      reconnect_attempts: 1,   # Defaults to 0
+      error_handler: -> (method:, returning:, exception:) {
+        # Report errors to Sentry as warnings
+        Raven.capture_exception exception, level: 'warning',
+          tags: { method: method, returning: returning }
+      }
     }
   else
     config.action_controller.perform_caching = false
@@ -75,4 +85,7 @@ Rails.application.configure do
   #   authentication:       'plain',
   #   enable_starttls_auto: true
   # }
+  Raven.configure do |config|
+    config.dsn = ENV['RAVEN_DSN']
+  end
 end
