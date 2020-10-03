@@ -17,6 +17,9 @@ gem 'webpacker', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
+# see https://guides.rubyonrails.org/caching_with_rails.html#cache-stores
+# gem 'redis-rails'
+gem 'hiredis'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
@@ -73,3 +76,6 @@ gem 'html2slim'
 # Styles
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'font-awesome-sass-rails', '~> 3.0', '>= 3.0.2.2'
+
+# Sentry
+gem 'sentry-raven'
