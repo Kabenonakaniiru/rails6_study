@@ -8,4 +8,16 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
   body
-    = yield
+    .container-fluid
+      .nav
+        / TODO: https://getbootstrap.jp/docs/4.2/components/navbar/ を参考にここにナビゲーションバーを仕込むこと。ログアウトボタンも。
+        .dropdown
+          a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            |Dropdown link
+          .dropdown-menu aria-labelledby="dropdownMenuLink"
+            a.dropdown-item href="#"
+              |Action
+            .dropdown-divider
+            a.dropdown-item href="#"
+              |logout
+      = yield
