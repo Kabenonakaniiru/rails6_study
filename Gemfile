@@ -74,6 +74,7 @@ gem 'slim-rails'
 gem 'html2slim'
 
 # Styles
+#TODO: 後でwebpackerの方に持って行く。
 gem 'font-awesome-sass-rails', '~> 3.0', '>= 3.0.2.2'
 
 # Sentry
