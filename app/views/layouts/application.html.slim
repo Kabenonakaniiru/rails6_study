@@ -18,6 +18,9 @@ html
             a.dropdown-item href="#"
               |Action
             .dropdown-divider
-            a.dropdown-item href="#"
-              |logout
+            =link_to destroy_user_session_path, method: :delete
+              |ログアウト
+      - if flash.notice
+        .alert.alert-success
+          = flash.notice
       = yield
