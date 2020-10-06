@@ -9,11 +9,11 @@ html
     = javascript_pack_tag 'application'
   body
     .container-fluid
-      .nav
+      nav.navbar.navbar-dark.bg-dark
         / TODO: https://getbootstrap.jp/docs/4.2/components/navbar/ を参考にここにナビゲーションバーを仕込むこと。ログアウトボタンも。
         .dropdown
           a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            |Dropdown link
+            |メニュー
           .dropdown-menu aria-labelledby="dropdownMenuLink"
             a.dropdown-item href="#"
               |Action
