@@ -11,15 +11,20 @@ html
     .container-fluid
       nav.navbar.navbar-dark.bg-dark
         / TODO: https://getbootstrap.jp/docs/4.2/components/navbar/ を参考にここにナビゲーションバーを仕込むこと。ログアウトボタンも。
+        / TODO: 右寄せにすること。ホームリンクも追加すること。
         .dropdown
           a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
             |メニュー
           .dropdown-menu aria-labelledby="dropdownMenuLink"
             a.dropdown-item href="#"
-              |Action
+              |Action(何か実装予定)
             .dropdown-divider
-            =link_to destroy_user_session_path, method: :delete
-              |ログアウト
+            - if logged_in?
+              = link_to destroy_user_session_path, class: 'dropdown-item', method: :delete
+                |ログアウト
+            - else
+              = link_to new_user_session_path, class: 'dropdown-item'
+                |ログイン
       - if flash.notice
         .alert.alert-success
           = flash.notice
