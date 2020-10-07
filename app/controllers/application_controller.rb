@@ -4,10 +4,9 @@ class ApplicationController < ActionController::Base
 
   private
     def logged_in?
-      # FIXME: ここ、多分判定ミスっている(ログイン後にもログインボタンが表示されるので)
       # see https://techracho.bpsinc.jp/hachi8833/2016_11_15/28993
       # 戻り値をtrue/falseに統一する
-      !!session[:user_id]
+      current_user.present?
     end
 
     def set_raven_context
