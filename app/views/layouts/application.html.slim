@@ -10,25 +10,5 @@ html
     = javascript_pack_tag 'application'
   body
     .container-fluid
-      nav.navbar.navbar-dark.bg-dark
-        <a class="navbar-brand" href="#">艦隊これくしょん 出撃回数管理ツール(仮)</a>
-        .dropdown
-          a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            |メニュー
-          .dropdown-menu.dropdown-menu-right aria-labelledby="dropdownMenuLink"
-            a.dropdown-item href="#"
-              |Action(何か実装予定)
-            .dropdown-divider
-            - if logged_in?
-              = link_to destroy_user_session_path, class: 'dropdown-item', method: :delete
-                |ログアウト
-            - else
-              = link_to new_user_session_path, class: 'dropdown-item'
-                |ログイン
-      - if flash.notice
-        .alert.alert-success
-          button.close type="button" data-dismiss="alert" aria-label="閉じる"
-            span aria-hidden="true"
-              |×
-          = flash.notice
+      = render "layouts/header"
       = yield
