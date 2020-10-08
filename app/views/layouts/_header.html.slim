@@ -19,3 +19,9 @@ nav.navbar.navbar-dark.bg-dark
       span aria-hidden="true"
         |×
     = flash.notice
+- if flash.alert
+  .alert.alert-danger role="alert"
+    button.close type="button" data-dismiss="alert" aria-label="閉じる"
+      span aria-hidden="true"
+        |×
+    = flash.alert
