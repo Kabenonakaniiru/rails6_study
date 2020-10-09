@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :logged_in?
+  helper_method :logged_in?, :admin_logged_in?
   before_action :set_raven_context # TODO: 認証後のコントローラは前のコントローラと分ける。このクラスはあくまでも基底クラスとして使う, :authenticate_user!
 
   private
@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
       # see https://techracho.bpsinc.jp/hachi8833/2016_11_15/28993
       # 戻り値をtrue/falseに統一する
       current_user.present?
+    end
+
+    def admin_logged_in?
+      current_admin.present?
     end
 
     def set_raven_context
