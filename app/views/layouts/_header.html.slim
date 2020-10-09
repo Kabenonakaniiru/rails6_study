@@ -11,6 +11,8 @@ nav.navbar.navbar-dark.bg-dark
         = link_to destroy_user_session_path, class: 'dropdown-item', method: :delete
           |ログアウト
       - else
+        = link_to new_admin_session_path, class: 'dropdown-item'
+          |管理者ログイン
         = link_to new_user_session_path, class: 'dropdown-item'
           |ログイン
 - if flash.notice
