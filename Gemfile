@@ -17,6 +17,9 @@ gem 'webpacker', '~> 4.0'
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
+# see https://guides.rubyonrails.org/caching_with_rails.html#cache-stores
+# gem 'redis-rails'
+gem 'hiredis'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
@@ -35,6 +38,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'rubocop', require: false
+  gem 'rubocop-packaging', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
@@ -58,3 +62,20 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # paging
 gem 'kaminari'
+
+# auth
+gem 'devise'
+gem 'omniauth'
+
+# slim generator
+gem 'slim-rails'
+
+# ERB形式のファイルをslim形式に変換してくれる
+gem 'html2slim'
+
+# Styles
+#TODO: 後でwebpackerの方に持って行く。
+gem 'font-awesome-sass-rails', '~> 3.0', '>= 3.0.2.2'
+
+# Sentry
+gem 'sentry-raven'

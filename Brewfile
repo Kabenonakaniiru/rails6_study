@@ -1,0 +1,6 @@
+tap "homebrew/core"
+brew "sqlite3"
+brew "node"
+brew "yarn"
+brew "redis"
+brew "imagemagick"

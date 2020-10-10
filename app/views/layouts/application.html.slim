@@ -1,0 +1,15 @@
+doctype html
+html lang="ja"
+  head
+    meta charset="UTF-8"
+    title
+      | 艦隊これくしょん 出撃回数管理ツール(仮)
+      / TODO: 後で定数に切り出して共通化(下のホームリンクも)
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+  body
+    .container-fluid
+      = render "layouts/header"
+      = yield

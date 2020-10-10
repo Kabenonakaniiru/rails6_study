@@ -18,9 +18,19 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
-    config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+    # config.cache_store = :memory_store
+    # see https://railsguides.jp/caching_with_rails.html
+    config.cache_store = :redis_cache_store, {
+      url: ENV['REDIS_URL'],
+      connect_timeout:    30,  # Defaults to 20 seconds
+      read_timeout:       0.2, # Defaults to 1 second
+      write_timeout:      0.2, # Defaults to 1 second
+      reconnect_attempts: 1,   # Defaults to 0
+      error_handler: -> (method:, returning:, exception:) {
+        # Report errors to Sentry as warnings
+        Raven.capture_exception exception, level: 'warning',
+          tags: { method: method, returning: returning }
+      }
     }
   else
     config.action_controller.perform_caching = false
@@ -59,4 +69,23 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  #Action Mailer URL
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'no-reply@example.com'} # FIXME: いつか変更
+  # see https://railsguides.jp/action_mailer_basics.html
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.gmail.com',
+  #   port:                 587,
+  #   domain:               'example.com',
+  #   user_name:            '<ユーザー名>',
+  #   password:             '<パスワード>',
+  #   authentication:       'plain',
+  #   enable_starttls_auto: true
+  # }
+  Raven.configure do |config|
+    config.dsn = ENV['RAVEN_DSN']
+  end
 end

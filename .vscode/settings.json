@@ -1,0 +1,10 @@
+{
+    "ruby.rubocop.useBundler": true,
+    "ruby.useBundler": true,
+    "editor.formatOnSave": true,
+    "ruby.format": "rubocop",
+    "editor.tabSize": 2,
+    "ruby.codeCompletion": "rcodetools",
+    "ruby.intellisense": "rubyLocate",
+    "editor.renderWhitespace": "all"
+}
