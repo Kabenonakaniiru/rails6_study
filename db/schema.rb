@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_10_193841) do
+ActiveRecord::Schema.define(version: 2020_10_12_134643) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 2020_10_10_193841) do
     t.index ["name"], name: "index_classifications_on_name", unique: true
   end
 
+  create_table "missions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "classification_id", null: false
+    t.boolean "limited", default: false, null: false
+    t.string "url"
+    t.string "note"
+    t.datetime "created_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
+    t.datetime "updated_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
+    t.index ["classification_id"], name: "index_missions_on_classification_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -71,4 +82,5 @@ ActiveRecord::Schema.define(version: 2020_10_10_193841) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "missions", "classifications"
 end
