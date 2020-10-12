@@ -42,12 +42,14 @@ ActiveRecord::Schema.define(version: 2020_10_10_193936) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
+    t.index ["name"], name: "index_classifications_on_name", unique: true
   end
 
   create_table "mission_kinds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
+    t.index ["name"], name: "index_mission_kinds_on_name", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
