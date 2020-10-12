@@ -1,0 +1,2 @@
+class MissionKind < ApplicationRecord
+end
