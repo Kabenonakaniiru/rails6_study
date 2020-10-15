@@ -1,5 +1,12 @@
+/  TODO: ymlへの切り出し
+= f.label :name, '任務名'
 = f.text_field :name
+/ classification_id
 / = f. @classfications
+/ TODO: 後で非表示フラグor表示期間を設定する。
+= f.label :limited, '限定海域'
 = f.check_box :limited, {class: ''}, 'true', 'false'
+= f.label :url, '攻略サイトアドレス'
 = f.url_field :url
-= f.text_area :note, size: "24x6"
+= f.label :note, '備考'
+= f.text_area :note
