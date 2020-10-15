@@ -5,10 +5,6 @@ class MissionsController < ApplicationController
     @missions = Mission.all.includes(:classification)
   end
 
-  def new
-    @mission = Mission.new
-  end
-
   def create
     # TODO: ModelViewへの切り出し。
     # TODO: Validationの実装
