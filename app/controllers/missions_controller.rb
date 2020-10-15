@@ -9,6 +9,9 @@ class MissionsController < ApplicationController
     # TODO: ModelViewへの切り出し。
     # TODO: Validationの実装
     Mission.create!(mission_params)
+    redirect_to missions_url, notice: '任務マスタの登録に成功しました。'
+  rescue => e
+    render action: :new
   end
 
   private
