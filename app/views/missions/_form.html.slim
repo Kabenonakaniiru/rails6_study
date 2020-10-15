@@ -3,6 +3,8 @@
 = f.text_field :name
 / classification_id
 / = f. @classfications
+= f.label :classification_id, '分類'
+= f.collection_select(:classification_id, @classifications, :id, :name, {}, {})
 / TODO: 後で非表示フラグor表示期間を設定する。
 = f.label :limited, '限定海域'
 = f.check_box :limited, {class: ''}, 'true', 'false'

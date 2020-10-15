@@ -13,7 +13,7 @@ class MissionsController < ApplicationController
 
   private
     def classifications
-      @classification = Classification.all
+      @classifications = Classification.all
     end
 
     def mission_params
