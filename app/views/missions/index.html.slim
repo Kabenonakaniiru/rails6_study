@@ -13,6 +13,7 @@ table
   - @missions.each do |mission|
     tr
       td = mission.id
+      / TODO: 任務名に編集リンクを付ける。(削除リンクもどこかにつけること)
       td = mission.name
       td = mission.classification.name
       td = mission.limited ? '限定海域' : '通常海域'
