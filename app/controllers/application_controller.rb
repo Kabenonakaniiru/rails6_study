@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :admin_logged_in?
   before_action :set_raven_context # TODO: 認証後のコントローラは前のコントローラと分ける。このクラスはあくまでも基底クラスとして使う, :authenticate_user!
 
+  protected
+    def manipulate_message(target, manipulate, result)
+      "#{target}の#{manipulate}に#{result ? '成功' : '失敗' }しました。"
+    end
+
   private
     def logged_in?
       # see https://techracho.bpsinc.jp/hachi8833/2016_11_15/28993
