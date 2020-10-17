@@ -16,8 +16,8 @@ table
       td = link_to mission.name, edit_mission_path(mission)
       td = mission.classification.name
       td = mission.limited ? '限定海域' : '通常海域'
-      / TODO: URLについては値が入っていたら自動的にリンクを生成するようにすること。
-      td = mission.url
+      - if mission.url.present?
+        td = link_to 'リンク', mission.url, target: :_blank
       / TODO: 備考については表示する文字数に制限を入れること
       td = mission.note
     
