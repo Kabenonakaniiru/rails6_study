@@ -16,6 +16,7 @@ class MissionsController < ApplicationController
     redirect_to missions_url, notice: mission_manipulate_message('登録', true)
   rescue => e
     # TODO: エラー表示の追加
+    logger.error(e)
     render action: :new
   end
 
@@ -24,10 +25,11 @@ class MissionsController < ApplicationController
       # TODO: ModelViewへの切り出し。
       # TODO: Validationの実装
       Mission.update!(mission_params)
-      redirect_to missions_url, notice: mission_manipulate_message('更新', true)
     end
+    redirect_to missions_url, notice: mission_manipulate_message('更新', true)
   rescue => e
     # TODO: エラー表示の追加
+    logger.error(e)
     render action: :edit
   end
 
@@ -36,11 +38,12 @@ class MissionsController < ApplicationController
     ActiveRecord::Base.transaction do
       # TODO: ModelViewへの切り出し。
       # TODO: Validationの実装
-      Mission.find(params[:id])&.update!(mission_params)
-      redirect_to missions_url, notice: mission_manipulate_message('削除', true)
+      Mission.find(params[:id])&.destroy!
     end
+    redirect_to missions_url, notice: mission_manipulate_message('削除', true)
   rescue => e
     # TODO: エラー表示の追加
+    logger.error(e)
     render action: :index
   end
 
