@@ -13,8 +13,7 @@ table
   - @missions.each do |mission|
     tr
       td = mission.id
-      / TODO: 任務名に編集リンクを付ける。(削除リンクもどこかにつけること)
-      td = mission.name
+      td = link_to mission.name, edit_mission_path(mission)
       td = mission.classification.name
       td = mission.limited ? '限定海域' : '通常海域'
       / TODO: URLについては値が入っていたら自動的にリンクを生成するようにすること。
