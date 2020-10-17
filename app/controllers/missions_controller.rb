@@ -2,6 +2,7 @@ class MissionsController < ApplicationController
   before_action :classifications
 
   def index
+    p '通った'
     @missions = Mission.all.includes(:classification)
   end
 
@@ -49,7 +50,7 @@ class MissionsController < ApplicationController
 
   private
     def mission_manipulate_message(manipulate, result)
-      mamnipulate_message('任務マスタ', manipulate, result)
+      manipulate_message('任務マスタ', manipulate, result)
     end
 
     def classifications
