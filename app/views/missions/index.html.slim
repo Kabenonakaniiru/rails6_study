@@ -3,12 +3,28 @@ h3 任務一覧
 table
   thead
     tr
+      td.bg-info colspan="6" 任務情報
+      td.bg-secondary colspan="12" 海域情報
+    tr
       td #
       td 任務名
       td 任務種別
       td 海域種別
       td 攻略情報
       td 備考
+      td 編集
+      td colspan="12" 海域情報
+    tr
+      td colspan="7" &nbsp;
+      td colspan="6" 1
+    tr
+      td colspan="7" &nbsp;
+      td 1
+      td 2
+      td 3
+      td 4
+      td 5
+      td 6
   tbody
   - @missions.each do |mission|
     tr
@@ -17,7 +33,20 @@ table
       td = mission.classification.name
       td = mission.limited ? '限定海域' : '通常海域'
       - if mission.url.present?
-        td = link_to 'リンク', mission.url, target: :_blank
+        td = link_to '[こちら]', mission.url, target: :_blank
       / TODO: 備考については表示する文字数に制限を入れること
       td = mission.note
-    
+      td
+        a.btn.btn-secondary 編集
+      td
+        input type="number" style="max-width: 1rem;"
+      td
+        input type="number" style="max-width: 1rem;"
+      td
+        input type="number" style="max-width: 1rem;"
+      td
+        input type="number" style="max-width: 1rem;"
+      td
+        input type="number" style="max-width: 1rem;"
+      td
+        input type="number" style="max-width: 1rem;"
