@@ -25,7 +25,7 @@ class MissionsController < ApplicationController
     ActiveRecord::Base.transaction do
       # TODO: ModelViewへの切り出し。
       # TODO: Validationの実装
-      Mission.update!(mission_params)
+      Mission.find(params[:id])&.update!(mission_params)
     end
     redirect_to missions_url, notice: mission_manipulate_message('更新', true)
   rescue => e
