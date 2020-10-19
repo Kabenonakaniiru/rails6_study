@@ -1,13 +1,9 @@
 class MissionsController < ApplicationController
   before_action :classifications
+  before_action :target_mission, only: [:edit, :update, :destroy]
 
   def index
-    p '通った'
     @missions = Mission.all.includes(:classification)
-  end
-
-  def edit
-    @mission = Mission.find(params[:id])
   end
 
   def create
@@ -25,7 +21,7 @@ class MissionsController < ApplicationController
     ActiveRecord::Base.transaction do
       # TODO: ModelViewへの切り出し。
       # TODO: Validationの実装
-      Mission.find(params[:id])&.update!(mission_params)
+      @mission.update!(mission_params)
     end
     redirect_to missions_url, notice: mission_manipulate_message('更新', true)
   rescue => e
@@ -39,7 +35,7 @@ class MissionsController < ApplicationController
     ActiveRecord::Base.transaction do
       # TODO: ModelViewへの切り出し。
       # TODO: Validationの実装
-      Mission.find(params[:id])&.destroy!
+      @mission.destroy!
     end
     redirect_to missions_url, notice: mission_manipulate_message('削除', true)
   rescue => e
@@ -55,6 +51,10 @@ class MissionsController < ApplicationController
 
     def classifications
       @classifications = Classification.all
+    end
+
+    def target_mission
+      @mission = Mission.find(params[:id])
     end
 
     def mission_params
