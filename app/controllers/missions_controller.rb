@@ -50,7 +50,7 @@ class MissionsController < ApplicationController
       redirect_to success_url, notice: mission_manipulate_message(manipulate, true)
     rescue => e
       logger.error(e)
-      flash[:alert] = "#{manipulate}に失敗しました。"
+      flash[:alert] = "#{mission_manipulate_message(manipulate, false)} 詳細メッセージ:[#{e.message}]"
       render action: error_action
     end
 end
