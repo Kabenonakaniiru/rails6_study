@@ -7,41 +7,16 @@ class MissionsController < ApplicationController
   end
 
   def create
-    # TODO: ModelViewへの切り出し。
-    # TODO: Validationの実装
-    Mission.create!(mission_params)
-    redirect_to missions_url, notice: mission_manipulate_message('登録', true)
-  rescue => e
-    # TODO: エラー表示の追加
-    logger.error(e)
-    render action: :new
+    do_transaction('登録', missions_url, :index) { Mission.create!(mission_params) }
   end
 
   def update
-    ActiveRecord::Base.transaction do
-      # TODO: ModelViewへの切り出し。
-      # TODO: Validationの実装
-      @mission.update!(mission_params)
-    end
-    redirect_to missions_url, notice: mission_manipulate_message('更新', true)
-  rescue => e
-    # TODO: エラー表示の追加
-    logger.error(e)
-    render action: :edit
+    do_transaction('更新', edit_mission_url, :edit) { @mission.update!(mission_params) }
   end
 
 
   def destroy
-    ActiveRecord::Base.transaction do
-      # TODO: ModelViewへの切り出し。
-      # TODO: Validationの実装
-      @mission.destroy!
-    end
-    redirect_to missions_url, notice: mission_manipulate_message('削除', true)
-  rescue => e
-    # TODO: エラー表示の追加
-    logger.error(e)
-    render action: :index
+    do_transaction('削除', missions_url, :index) { @mission.destroy! }
   end
 
   private
@@ -64,5 +39,18 @@ class MissionsController < ApplicationController
         :limited,
         :url,
         :note)
+    end
+
+    def do_transaction(manipulate, success_url, error_action)
+      ActiveRecord::Base.transaction do
+        # TODO: ModelViewへの切り出し。
+        # TODO: Validationの実装
+        yield
+      end
+      redirect_to success_url, notice: mission_manipulate_message(manipulate, true)
+    rescue => e
+      logger.error(e)
+      flash[:alert] = "#{manipulate}に失敗しました。"
+      render action: error_action
     end
 end
