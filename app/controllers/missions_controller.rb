@@ -51,6 +51,8 @@ class MissionsController < ApplicationController
     rescue => e
       logger.error(e)
       flash[:alert] = "#{mission_manipulate_message(manipulate, false)} 詳細メッセージ:[#{e.message}]"
+      # FIXME: 暫定対応なので、後で消すこと。エラーになった時は、indexを通っていない……？ 渡しているActionが効いていないわけではない。
+      @missions = Mission.all.includes(:classification)
       render action: error_action
     end
 end
