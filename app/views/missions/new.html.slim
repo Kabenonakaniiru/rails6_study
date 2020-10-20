@@ -1,4 +1,4 @@
 = form_with model: Mission.new, local: true do |f|
   = render 'form', f: f
-  = f.submit '登録'
-  = link_to '戻る', missions_path
+  = f.submit '登録', class: 'btn btn-secondary'
+  = link_to '戻る', missions_path, class: 'btn btn-secondary'
