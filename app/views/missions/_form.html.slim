@@ -6,9 +6,9 @@
   = f.label :classification_id, '分類'
   = f.collection_select(:classification_id, @classifications, :id, :name, {}, {class: 'form-control'})
 / TODO: 後で非表示フラグor表示期間を設定する。
-.form-check
-  = f.label :limited, '限定海域', class: 'form-check-label'
+.form-group.form-check
   = f.check_box :limited, {class: 'form-check-input'}, 'true', 'false'
+  = f.label :limited, '限定海域', class: 'form-check-label'
 .form-group
   = f.label :url, '攻略サイトアドレス'
   = f.url_field :url, class: 'form-control'
