@@ -9,6 +9,7 @@ html lang="ja"
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
+    = javascript_pack_tag javascript_path
   body
     .container-fluid
       = render "layouts/header"
