@@ -14,7 +14,6 @@ class MissionsController < ApplicationController
     do_transaction('更新', edit_mission_url, :edit) { @mission.update!(mission_params) }
   end
 
-
   def destroy
     do_transaction('削除', missions_url, :index) { @mission.destroy! }
   end
