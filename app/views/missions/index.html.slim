@@ -2,6 +2,7 @@ h3 任務一覧
 = link_to '新規登録', new_mission_path, class: 'btn btn-secondary'
 table.mission-editable.table.table-sm.table-bordered
   thead.thead-light
+    / TODO: 余裕のある時にcolgroupが使えないか検討。
     tr
       th scope="col" colspan=6 任務情報
       th scope="col" colspan=37 海域情報
@@ -11,7 +12,8 @@ table.mission-editable.table.table-sm.table-bordered
       th scope="col" rowspan=3 任務種別
       th scope="col" rowspan=3 海域種別
       th scope="col" rowspan=3 攻略情報
-      th scope="col" rowspan=3 備考
+      /  FIXME: 一旦排除した。必要性を精査すること。
+      / th scope="col" rowspan=3 備考
       th scope="col" rowspan=3 編集
       th scope="col" colspan="6" 1
       th scope="col" colspan="5" 2
@@ -75,8 +77,8 @@ table.mission-editable.table.table-sm.table-bordered
         td
           = link_to '[こちら]', mission.url, target: :_blank
           i.fas.fa-external-link-alt
-      / TODO: 備考については表示する文字数に制限を入れること
-      td = mission.note
+      / TODO: 備考については表示する文字数に制限を入れること FIXME: 一旦排除した。必要性を精査すること。
+      / td = mission.note
       td
         i.fas.fa-edit.edit-row
       / 1
