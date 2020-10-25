@@ -1,162 +1,163 @@
 h3 任務一覧
 = link_to '新規登録', new_mission_path, class: 'btn btn-secondary'
-table.mission-editable.table.table-sm.table-bordered
-  thead.thead-light
-    / TODO: 余裕のある時にcolgroupが使えないか検討。
-    tr
-      th scope="col" colspan=6 任務情報
-      th scope="col" colspan=37 海域情報
-    tr
-      th scope="col" rowspan=3 #
-      th scope="col" rowspan=3 任務名
-      th scope="col" rowspan=3 任務種別
-      th scope="col" rowspan=3 海域種別
-      th scope="col" rowspan=3 攻略情報
-      /  FIXME: 一旦排除した。必要性を精査すること。
-      / th scope="col" rowspan=3 備考
-      th scope="col" rowspan=3 編集
-      th scope="col" colspan="6" 1
-      th scope="col" colspan="5" 2
-      th scope="col" colspan="5" 3
-      th scope="col" colspan="5" 4
-      th scope="col" colspan="5" 5
-      th scope="col" colspan="5" 6
-      th scope="col" colspan="5" 7
-    tr
-      / 1
-      th 1
-      th 2
-      th 3
-      th 4
-      th 5
-      th 6
-      / 2
-      th 1
-      th 2
-      th 3
-      th 4
-      th 5
-      / 3
-      th 1
-      th 2
-      th 3
-      th 4
-      th 5
-      / 4
-      th 1
-      th 2
-      th 3
-      th 4
-      th 5
-      / 5
-      th 1
-      th 2
-      th 3
-      th 4
-      th 5
-      / 6
-      th 1
-      th 2
-      th 3
-      th 4
-      th 5
-      / 7
-      th 1
-      th 2-1
-      th 2-2
-      th 3-1
-      th 3-2
-  tbody
-  - @missions.each do |mission|
-    tr
-      td = mission.id
-      td = link_to mission.name, edit_mission_path(mission)
-      td = mission.classification.name
-      td = mission.limited ? '限定海域' : '通常海域'
-      - if mission.url.present?
+.table-responsive
+  table.mission-editable.table.table-sm.table-bordered
+    thead.thead-light
+      / TODO: 余裕のある時にcolgroupが使えないか検討。
+      tr
+        th.mission-header scope="col" colspan=6 任務情報
+        th scope="col" colspan=37 海域情報
+      tr
+        th scope="col" rowspan=3 #
+        th scope="col" rowspan=3 任務名
+        th scope="col" rowspan=3 任務種別
+        th scope="col" rowspan=3 海域種別
+        th scope="col" rowspan=3 攻略情報
+        /  FIXME: 一旦排除した。必要性を精査すること。
+        / th scope="col" rowspan=3 備考
+        th scope="col" rowspan=3 編集
+        th scope="col" colspan="6" 1
+        th scope="col" colspan="5" 2
+        th scope="col" colspan="5" 3
+        th scope="col" colspan="5" 4
+        th scope="col" colspan="5" 5
+        th scope="col" colspan="5" 6
+        th scope="col" colspan="5" 7
+      tr
+        / 1
+        th 1
+        th 2
+        th 3
+        th 4
+        th 5
+        th 6
+        / 2
+        th 1
+        th 2
+        th 3
+        th 4
+        th 5
+        / 3
+        th 1
+        th 2
+        th 3
+        th 4
+        th 5
+        / 4
+        th 1
+        th 2
+        th 3
+        th 4
+        th 5
+        / 5
+        th 1
+        th 2
+        th 3
+        th 4
+        th 5
+        / 6
+        th 1
+        th 2
+        th 3
+        th 4
+        th 5
+        / 7
+        th 1
+        th 2-1
+        th 2-2
+        th 3-1
+        th 3-2
+    tbody
+    - @missions.each do |mission|
+      tr
+        td = mission.id
+        td = link_to mission.name, edit_mission_path(mission)
+        td = mission.classification.name
+        td = mission.limited ? '限定海域' : '通常海域'
+        - if mission.url.present?
+          td
+            = link_to '[こちら]', mission.url, target: :_blank
+            i.fas.fa-external-link-alt
+        / TODO: 備考については表示する文字数に制限を入れること FIXME: 一旦排除した。必要性を精査すること。
+        / td = mission.note
         td
-          = link_to '[こちら]', mission.url, target: :_blank
-          i.fas.fa-external-link-alt
-      / TODO: 備考については表示する文字数に制限を入れること FIXME: 一旦排除した。必要性を精査すること。
-      / td = mission.note
-      td
-        i.fas.fa-edit.edit-row
-      / 1
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      / 2
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      / 3
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      / 4
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      / 5
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      / 6
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      / 7
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
-      td
-        input.mission-count type="number"
+          i.fas.fa-edit.edit-row
+        / 1
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        / 2
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        / 3
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        / 4
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        / 5
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        / 6
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        / 7
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
+        td
+          input.mission-count type="number" min=0 max=99
