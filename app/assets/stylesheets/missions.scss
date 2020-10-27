@@ -3,6 +3,15 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .mission-editable {
+  // thead tr th { 
+  //   position: sticky; 
+  //   top:0; 
+  // }
+  // .mission-header{
+  //   position: sticky;
+  //   top: 0;
+  //   left: 0;
+  // }
   .mission-count{
     max-width: 2rem;
     &::-webkit-inner-spin-button,
