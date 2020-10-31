@@ -51,44 +51,44 @@ ActiveRecord::Schema.define(version: 2020_10_12_134643) do
     t.boolean "limited", default: false, null: false
     t.string "url"
     t.string "note"
+    t.integer "N1_1", limit: 1, default: 0, null: false
+    t.integer "N1_2", limit: 1, default: 0, null: false
+    t.integer "N1_3", limit: 1, default: 0, null: false
+    t.integer "N1_4", limit: 1, default: 0, null: false
+    t.integer "N1_5", limit: 1, default: 0, null: false
+    t.integer "N1_6", limit: 1, default: 0, null: false
+    t.integer "N2_1", limit: 1, default: 0, null: false
+    t.integer "N2_2", limit: 1, default: 0, null: false
+    t.integer "N2_3", limit: 1, default: 0, null: false
+    t.integer "N2_4", limit: 1, default: 0, null: false
+    t.integer "N2_5", limit: 1, default: 0, null: false
+    t.integer "N3_1", limit: 1, default: 0, null: false
+    t.integer "N3_2", limit: 1, default: 0, null: false
+    t.integer "N3_3", limit: 1, default: 0, null: false
+    t.integer "N3_4", limit: 1, default: 0, null: false
+    t.integer "N3_5", limit: 1, default: 0, null: false
+    t.integer "N4_1", limit: 1, default: 0, null: false
+    t.integer "N4_2", limit: 1, default: 0, null: false
+    t.integer "N4_3", limit: 1, default: 0, null: false
+    t.integer "N4_4", limit: 1, default: 0, null: false
+    t.integer "N4_5", limit: 1, default: 0, null: false
+    t.integer "N5_1", limit: 1, default: 0, null: false
+    t.integer "N5_2", limit: 1, default: 0, null: false
+    t.integer "N5_3", limit: 1, default: 0, null: false
+    t.integer "N5_4", limit: 1, default: 0, null: false
+    t.integer "N5_5", limit: 1, default: 0, null: false
+    t.integer "N6_1", limit: 1, default: 0, null: false
+    t.integer "N6_2", limit: 1, default: 0, null: false
+    t.integer "N6_3", limit: 1, default: 0, null: false
+    t.integer "N6_4", limit: 1, default: 0, null: false
+    t.integer "N6_5", limit: 1, default: 0, null: false
+    t.integer "N7_1", limit: 1, default: 0, null: false
+    t.integer "N7_2_1", limit: 1, default: 0, null: false
+    t.integer "N7_2_2", limit: 1, default: 0, null: false
+    t.integer "N7_3_1", limit: 1, default: 0, null: false
+    t.integer "N7_3_2", limit: 1, default: 0, null: false
     t.datetime "created_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
-    t.integer "N1-1", limit: 1, default: 0, null: false
-    t.integer "N1-2", limit: 1, default: 0, null: false
-    t.integer "N1-3", limit: 1, default: 0, null: false
-    t.integer "N1-4", limit: 1, default: 0, null: false
-    t.integer "N1-5", limit: 1, default: 0, null: false
-    t.integer "N1-6", limit: 1, default: 0, null: false
-    t.integer "N2-1", limit: 1, default: 0, null: false
-    t.integer "N2-2", limit: 1, default: 0, null: false
-    t.integer "N2-3", limit: 1, default: 0, null: false
-    t.integer "N2-4", limit: 1, default: 0, null: false
-    t.integer "N2-5", limit: 1, default: 0, null: false
-    t.integer "N3-1", limit: 1, default: 0, null: false
-    t.integer "N3-2", limit: 1, default: 0, null: false
-    t.integer "N3-3", limit: 1, default: 0, null: false
-    t.integer "N3-4", limit: 1, default: 0, null: false
-    t.integer "N3-5", limit: 1, default: 0, null: false
-    t.integer "N4-1", limit: 1, default: 0, null: false
-    t.integer "N4-2", limit: 1, default: 0, null: false
-    t.integer "N4-3", limit: 1, default: 0, null: false
-    t.integer "N4-4", limit: 1, default: 0, null: false
-    t.integer "N4-5", limit: 1, default: 0, null: false
-    t.integer "N5-1", limit: 1, default: 0, null: false
-    t.integer "N5-2", limit: 1, default: 0, null: false
-    t.integer "N5-3", limit: 1, default: 0, null: false
-    t.integer "N5-4", limit: 1, default: 0, null: false
-    t.integer "N5-5", limit: 1, default: 0, null: false
-    t.integer "N6-1", limit: 1, default: 0, null: false
-    t.integer "N6-2", limit: 1, default: 0, null: false
-    t.integer "N6-3", limit: 1, default: 0, null: false
-    t.integer "N6-4", limit: 1, default: 0, null: false
-    t.integer "N6-5", limit: 1, default: 0, null: false
-    t.integer "N7-1", limit: 1, default: 0, null: false
-    t.integer "N7-2-1", limit: 1, default: 0, null: false
-    t.integer "N7-2-2", limit: 1, default: 0, null: false
-    t.integer "N7-3-1", limit: 1, default: 0, null: false
-    t.integer "N7-3-2", limit: 1, default: 0, null: false
     t.index ["classification_id"], name: "index_missions_on_classification_id"
   end
 
