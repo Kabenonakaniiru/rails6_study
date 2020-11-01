@@ -3,10 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .mission-editable {
-  // thead tr th { 
-  //   position: sticky; 
-  //   top:0; 
-  // }
+  thead tr th { 
+    // position: sticky; 
+    // top:0;
+    white-space: nowrap
+  }
+  tbody tr td { 
+    white-space: nowrap
+  }
   // .mission-header{
   //   position: sticky;
   //   top: 0;
