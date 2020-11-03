@@ -18,6 +18,15 @@ class MissionsController < ApplicationController
     do_transaction('削除', missions_url, :index) { @mission.destroy! }
   end
 
+
+  def find_mission_area
+    # TODO: 実装
+  end
+
+  def mission_area_save
+    # TODO: 実装
+  end
+
   private
     def mission_manipulate_message(manipulate, result)
       manipulate_message('任務マスタ', manipulate, result)
