@@ -84,7 +84,10 @@ h3 任務一覧
           i.fas.fa-edit.edit-row-icon
         / 1
         td
-          input.mission-count type="number" min=0 max=99
+          / TODO: ここに、切り替え前の表示欄を作成
+          / input.mission-count type="number" min=0 max=99
+          / TODO: このnumber_fieldに、初期は非表示クラスを追加して、表示状態を切り替えられるようにする。
+          = number_field_tag :N1_1, mission.N1_1, min: 0, max: 99, class: 'mission-count'
         td
           input.mission-count type="number" min=0 max=99
         td
