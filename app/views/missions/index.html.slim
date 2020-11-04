@@ -87,80 +87,82 @@ h3 任務一覧
           / TODO: ここに、切り替え前の表示欄を作成
           / input.mission-count type="number" min=0 max=99
           / TODO: このnumber_fieldに、初期は非表示クラスを追加して、表示状態を切り替えられるようにする。
+
+          / TODO: すごーくあたまの悪い実装をしているが、ここら辺は配列か何かにして回して生成したい。
           = number_field_tag :N1_1, mission.N1_1, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N1_2, mission.N1_2, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N1_3, mission.N1_3, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N1_4, mission.N1_4, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N1_5, mission.N1_5, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N1_6, mission.N1_6, min: 0, max: 99, class: 'mission-count'
         / 2
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N2_1, mission.N2_1, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N2_2, mission.N2_2, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N2_3, mission.N2_3, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N2_4, mission.N2_4, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N2_5, mission.N2_5, min: 0, max: 99, class: 'mission-count'
         / 3
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N3_1, mission.N2_1, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N3_2, mission.N2_2, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N3_3, mission.N2_3, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N3_4, mission.N2_4, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N3_5, mission.N2_5, min: 0, max: 99, class: 'mission-count'
         / 4
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N4_1, mission.N4_1, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N4_2, mission.N4_2, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N4_3, mission.N4_3, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N4_4, mission.N4_4, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N4_5, mission.N4_5, min: 0, max: 99, class: 'mission-count'
         / 5
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N5_1, mission.N5_1, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N5_2, mission.N5_2, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N5_3, mission.N5_3, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N5_4, mission.N5_4, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N5_5, mission.N5_5, min: 0, max: 99, class: 'mission-count'
         / 6
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N6_1, mission.N6_1, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N6_2, mission.N6_2, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N6_3, mission.N6_3, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N6_4, mission.N6_4, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N6_5, mission.N6_5, min: 0, max: 99, class: 'mission-count'
         / 7
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N7_1, mission.N7_1, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N7_2_1, mission.N7_2_1, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N7_2_2, mission.N7_2_2, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N7_3_1, mission.N7_3_1, min: 0, max: 99, class: 'mission-count'
         td
-          input.mission-count type="number" min=0 max=99
+          = number_field_tag :N7_3_2, mission.N7_3_2, min: 0, max: 99, class: 'mission-count'
