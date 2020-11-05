@@ -16,7 +16,14 @@
   //   top: 0;
   //   left: 0;
   // }
-  .mission-count-editor{
+  .mission-count-display-cell {
+    display: inline-block;
+    width: 2rem;
+    max-width: 2rem;
+    max-height: 1.5rem;
+  }
+
+  .mission-count-editor {
     max-width: 2rem;
     max-height: 1.5rem;
     &::-webkit-inner-spin-button,
