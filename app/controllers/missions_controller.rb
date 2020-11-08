@@ -1,6 +1,7 @@
 class MissionsController < ApplicationController
   before_action :classifications
   before_action :target_mission, only: [:edit, :update, :destroy]
+  # TODO: このコントローラはadmin配下に移動すること。
 
   def index
     @missions = Mission.all.includes(:classification)
