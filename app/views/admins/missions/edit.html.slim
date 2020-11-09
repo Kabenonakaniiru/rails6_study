@@ -2,4 +2,4 @@
   = render 'form', f: f
   = f.submit '更新', class: 'btn btn-secondary'
   = link_to '削除', @mission, data: { confirm: "本当に削除しますか?" }, method: :delete, class: 'btn btn-secondary'
-  = link_to '戻る', missions_path, class: 'btn btn-secondary'
+  = link_to '戻る', admins_missions_path, class: 'btn btn-secondary'
