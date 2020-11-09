@@ -11,8 +11,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :missions do
-    get 'find_mission_area'
-    post 'mission_area_save'
+  namespace :admins do
+    resources :missions do
+      get 'find_mission_area'
+      post 'mission_area_save'
+    end
   end
 end

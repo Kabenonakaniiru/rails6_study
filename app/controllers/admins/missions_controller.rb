@@ -1,7 +1,7 @@
-class MissionsController < ApplicationController
+class Admins::MissionsController < ApplicationController
   before_action :classifications
   before_action :target_mission, only: [:edit, :update, :destroy]
-  # TODO: このコントローラはadmin配下に移動すること。
+  # TODO: このコントローラはadmin配下に移動すること。nannkamo
 
   def index
     @missions = Mission.all.includes(:classification)
