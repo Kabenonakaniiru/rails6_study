@@ -17,4 +17,6 @@ Rails.application.routes.draw do
       post 'mission_area_save'
     end
   end
+
+  # TODO: エラー頁用のルーティングを追加する。
 end
