@@ -1,4 +1,5 @@
 class Admins::MissionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :classifications
   before_action :target_mission, only: [:edit, :update, :destroy]
   # TODO: このコントローラはadmin配下に移動すること。nannkamo
