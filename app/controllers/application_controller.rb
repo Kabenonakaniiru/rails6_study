@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context # TODO: 認証後のコントローラは前のコントローラと分ける。このクラスはあくまでも基底クラスとして使う, :authenticate_user!
 
   protected
-    def manipulate_message(target, manipulate, result)
-      "#{target}の#{manipulate}に#{result ? '成功' : '失敗' }しました。"
+    def manipulate_message(target, manipulate, target_name, result)
+      p target_name
+      "#{target}#{target_name.nil? ?  '' : '[' + target_name + ']'}の#{manipulate}に#{result ? '成功' : '失敗' }しました。"
     end
 
   private

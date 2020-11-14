@@ -9,15 +9,15 @@ class Admins::MissionsController < ApplicationController
   end
 
   def create
-    do_transaction('登録', admins_missions_url, :index) { Mission.create!(mission_params) }
+    do_transaction('登録', admins_missions_url, :index, nil) { Mission.create!(mission_params) }
   end
 
   def update
-    do_transaction('更新', edit_admins_mission_url, :edit) { @mission.update!(mission_params) }
+    do_transaction('更新', edit_admins_mission_url, :edit, nil) { @mission.update!(mission_params) }
   end
 
   def destroy
-    do_transaction('削除', admins_missions_url, :index) { @mission.destroy! }
+    do_transaction('削除', admins_missions_url, :index, @mission.name) { @mission.destroy! }
   end
 
 
@@ -30,8 +30,8 @@ class Admins::MissionsController < ApplicationController
   end
 
   private
-    def mission_manipulate_message(manipulate, result)
-      manipulate_message('任務マスタ', manipulate, result)
+    def mission_manipulate_message(manipulate, target_name, result)
+      manipulate_message('任務マスタ', manipulate, target_name, result)
     end
 
     def classifications
@@ -51,16 +51,16 @@ class Admins::MissionsController < ApplicationController
         :note)
     end
 
-    def do_transaction(manipulate, success_url, error_action)
+    def do_transaction(manipulate, success_url, error_action, target_name)
       ActiveRecord::Base.transaction do
         # TODO: ModelViewへの切り出し。
         # TODO: Validationの実装
         yield
       end
-      redirect_to success_url, notice: mission_manipulate_message(manipulate, true)
+      redirect_to success_url, notice: mission_manipulate_message(manipulate, target_name, true)
     rescue => e
       logger.error(e)
-      flash[:alert] = "#{mission_manipulate_message(manipulate, false)} 詳細メッセージ:[#{e.message}]"
+      flash[:alert] = "#{mission_manipulate_message(manipulate, target_name, false)} 詳細メッセージ:[#{e.message}]"
       # FIXME: 暫定対応なので、後で消すこと。エラーになった時は、indexを通っていない……？ 渡しているActionが効いていないわけではない。
       @missions = Mission.all.includes(:classification)
       render action: error_action
