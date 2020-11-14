@@ -9,15 +9,15 @@ class Admins::MissionsController < ApplicationController
   end
 
   def create
-    do_transaction('登録', missions_url, :index) { Mission.create!(mission_params) }
+    do_transaction('登録', admins_missions_url, :index) { Mission.create!(mission_params) }
   end
 
   def update
-    do_transaction('更新', edit_mission_url, :edit) { @mission.update!(mission_params) }
+    do_transaction('更新', edit_admins_mission_url, :edit) { @mission.update!(mission_params) }
   end
 
   def destroy
-    do_transaction('削除', missions_url, :index) { @mission.destroy! }
+    do_transaction('削除', admins_missions_url, :index) { @mission.destroy! }
   end
 
 
