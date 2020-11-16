@@ -17,9 +17,30 @@
       });
       if (dataFaI2Svg.hasClass('fa-edit')) {
         // TODO: ここに保存時の動作追加
-        alert("保存");
+        alert($this.parent().find(".row_get_link").attr('href'));
+        var url = $this.parent().find(".row_get_link").attr('href');
+        $.ajax(
+          url,
+          {
+            type: 'get',
+            data: { 'test': 'test_data' },
+            dataType: 'json'
+          }
+        ).done(function (data) {
+          alert(data);
+        }).fail(function () {
+          alert("error");
+        });
+        //   dataFaI2Svg.,
+        //   {
+        //     type: 'get',
+        //     data: { query: $('#keyword').val() },
+        //     dataType: 'xml'
+        //   }
+        // )
       } else {
         // TODO: ここに編集時の動作追加
+        // $.ajax();
       }
     });
   });

@@ -82,6 +82,8 @@ h3 任務一覧
         / td = mission.note
         td
           i.fas.fa-edit.edit-row-icon
+          = link_to '', admins_mission_find_mission_area_path(mission), class: 'row_get_link d-none'
+          = link_to '', admins_mission_mission_area_save_path(mission), method: :post, class: 'row_save_link d-none'
         / 1 TODO: すごーくあたまの悪い実装をしているが、ここら辺は配列か何かにして回して生成したい。
         td.mission-count-area
           span.mission-count-display-cell = mission.N1_1

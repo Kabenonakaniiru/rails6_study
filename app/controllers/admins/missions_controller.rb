@@ -20,13 +20,18 @@ class Admins::MissionsController < ApplicationController
     do_transaction('削除', admins_missions_url, :index, @mission.name) { @mission.destroy! }
   end
 
-
   def find_mission_area
+    # TODO: 実装
     p 'find_mission_area_通った'
+    # TODO: 多分render jsonしないといけない
+    'test:find_mission_area'
   end
 
   def mission_area_save
     # TODO: 実装
+    p 'mission_area_save_通った'
+    # TODO: 多分render jsonしないといけない
+    'test:mission_area_save'
   end
 
   private
