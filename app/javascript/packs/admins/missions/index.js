@@ -19,12 +19,12 @@
         // TODO: ここに保存時の動作追加
       } else {
         // TODO: ここに編集時の動作追加
-        alert($this.parent().find(".row_get_link").attr('href'));
         var url = $this.parent().find(".row_get_link").attr('href');
         $.ajax(
           url,
           {
             type: 'get',
+            // TODO: ここのデータ、渡す必要はない気がするので、要精査。
             data: { 'test': 'test_data' },
             dataType: 'json'
           }
