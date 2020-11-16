@@ -15,6 +15,12 @@
         $td.find('.mission-count-display-cell').toggleClass('d-none');
         $td.find('.mission-count-editor').toggleClass('d-none');
       });
+      if (dataFaI2Svg.hasClass('fa-edit')) {
+        // TODO: ここに保存時の動作追加
+        alert("保存");
+      } else {
+        // TODO: ここに編集時の動作追加
+      }
     });
   });
 })(jQuery);
