@@ -22,7 +22,7 @@ class Admins::MissionsController < ApplicationController
 
 
   def find_mission_area
-    # TODO: 実装
+    p 'find_mission_area_通った'
   end
 
   def mission_area_save
