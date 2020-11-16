@@ -17,6 +17,8 @@
       });
       if (dataFaI2Svg.hasClass('fa-edit')) {
         // TODO: ここに保存時の動作追加
+      } else {
+        // TODO: ここに編集時の動作追加
         alert($this.parent().find(".row_get_link").attr('href'));
         var url = $this.parent().find(".row_get_link").attr('href');
         $.ajax(
@@ -31,16 +33,6 @@
         }).fail(function () {
           alert("error");
         });
-        //   dataFaI2Svg.,
-        //   {
-        //     type: 'get',
-        //     data: { query: $('#keyword').val() },
-        //     dataType: 'xml'
-        //   }
-        // )
-      } else {
-        // TODO: ここに編集時の動作追加
-        // $.ajax();
       }
     });
   });
