@@ -1,5 +1,23 @@
 (function ($) {
   $(function () {
+    // FIXME: 関数名は適当。後で共通的なハンドリング用のクラスなどを作ること。(ただし、Vue.jsへの置き換えを行ってから)
+    var commonJsonAjax = function (url, method, dataMap, successFunc, errorFunc) {
+      $.ajax(
+        url,
+        {
+          type: method,
+          data: dataMap,
+          dataType: 'json',
+          beforeSend: function (xhr, setting) {
+            // TODO: ここにLoadingアイコンを表示する処理を設定。※非表示にする処理も作成が必要。
+          }
+        }).done(function (data) {
+          successFunc(data);
+        }).fail(function () {
+          // FIXME: ここ引数を精査。
+          errorFunc();
+        });
+    };
     $('.edit-row-icon').on('click', function () {
       // とりあえず切り替えだけの処理
       var $this = $(this);
@@ -20,18 +38,11 @@
       } else {
         // TODO: ここに編集時の動作追加
         var url = $this.parent().find(".row_get_link").attr('href');
-        $.ajax(
-          url,
-          {
-            type: 'get',
-            // TODO: ここのデータ、渡す必要はない気がするので、要精査。
-            data: { 'test': 'test_data' },
-            dataType: 'json'
-          }
-        ).done(function (data) {
+        // TODO: 共通化
+        commonJsonAjax(url, 'get', {}, function (data) {
           alert(data);
-        }).fail(function () {
-          alert("error");
+        }, function () {
+          // TODO: 実装
         });
       }
     });
