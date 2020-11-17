@@ -21,10 +21,8 @@ class Admins::MissionsController < ApplicationController
   end
 
   def find_mission_area
-    # TODO: 実装
-    p 'find_mission_area_通った'
-    # TODO: 多分render jsonしないといけない
-    'test:find_mission_area'
+    mission = Mission.find(params[:mission_id].to_i)
+    render json: mission
   end
 
   def mission_area_save
