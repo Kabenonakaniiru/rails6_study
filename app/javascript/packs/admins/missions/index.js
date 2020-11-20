@@ -2,20 +2,25 @@
   $(function () {
     // FIXME: 関数名は適当。後で共通的なハンドリング用のクラスなどを作ること。(ただし、Vue.jsへの置き換えを行ってから)
     var commonJsonAjax = function (url, method, dataMap, successFunc, errorFunc) {
+      var $loadingImage = $('#loading-image');
       $.ajax(
         url,
         {
           type: method,
           data: dataMap,
           dataType: 'json',
+          cache: false,
           beforeSend: function (xhr, setting) {
             // TODO: ここにLoadingアイコンを表示する処理を設定。※非表示にする処理も作成が必要。
+            $loadingImage.removeClass('d-none');
           }
         }).done(function (data) {
           successFunc(data);
-        }).fail(function () {
-          // FIXME: ここ引数を精査。
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+          // FIXME: ここ共通的なエラー処理を実装。
           errorFunc();
+        }).always(function (jqXHR, textStatus) {
+          $loadingImage.addClass('d-none');
         });
     };
     // TODO: 後で適切な引数名に変更すること。更新とそうでないときの処理を分けること。
