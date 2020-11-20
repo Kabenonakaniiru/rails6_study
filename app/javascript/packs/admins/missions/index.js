@@ -24,32 +24,35 @@
         });
     };
     // TODO: 後で適切な引数名に変更すること。更新とそうでないときの処理を分けること。
-    var toggleRow = function ($this, data) {
+    var toggleRow = function ($icon, data) {
       // テキストフィールドとラベル表示を切り替える FIXME: あとでいいコメント考えてくだしあ
       // this = i → row取得→配下tdの特定クラスを切りかえる
-      var row = $this.parent().parent();
+      var row = $icon.parent().parent();
       // edit→saveアイコンに切り替えるとき、行配下のセルを編集可能にする。
       row.children('.mission-count-area').each(function (index, td) {
         var $td = $(td);
+        // TODO: ここにサーバから取得した最新の情報を反映する処理の追加が必要になる。
+        // TODO: 列が「どのカラムに対応するか」どこかで保持している必要がある。data-"カラム名"のようにするか？
+        // data
         $td.find('.mission-count-display-cell').toggleClass('d-none');
         $td.find('.mission-count-editor').toggleClass('d-none');
       });
     }
     $('.edit-row-icon').on('click', function () {
       // 「編集」列のアイコンをクリックしたときの処理
-      var $this = $(this);
-      var dataFaI2Svg = $this.find('[data-fa-i2svg]');
+      var $icon = $(this);
+      var dataFaI2Svg = $icon.find('[data-fa-i2svg]');
       dataFaI2Svg.toggleClass('fa-edit')
         .toggleClass('fa-save');
       if (dataFaI2Svg.hasClass('fa-edit')) {
         // TODO: ここに保存時の動作追加
-        toggleRow($this);
+        toggleRow($icon);
       } else {
         // TODO: ここに編集時の動作追加
-        var url = $this.parent().find(".row_get_link").attr('href');
+        var url = $icon.parent().find(".row_get_link").attr('href');
         // TODO: 共通化
         commonJsonAjax(url, 'get', {}, function (data) {
-          toggleRow($this, data);
+          toggleRow($icon, data);
         }, function () {
           // TODO: 実装
         });
