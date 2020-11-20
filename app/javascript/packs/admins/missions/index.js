@@ -2,6 +2,7 @@
   $(function () {
     // FIXME: 関数名は適当。後で共通的なハンドリング用のクラスなどを作ること。(ただし、Vue.jsへの置き換えを行ってから)
     var commonJsonAjax = function (url, method, dataMap, successFunc, errorFunc) {
+      // TODO: スピナー表示は真ん中に持ってくる必要があるし、なんならモーダル化して他の項目を触れなくする必要がある。
       var $loadingImage = $('#loading-image');
       $.ajax(
         url,
