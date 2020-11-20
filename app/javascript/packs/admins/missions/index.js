@@ -12,7 +12,6 @@
           dataType: 'json',
           cache: false,
           beforeSend: function (xhr, setting) {
-            // TODO: ここにLoadingアイコンを表示する処理を設定。※非表示にする処理も作成が必要。
             $loadingImage.removeClass('d-none');
           }
         }).done(function (data) {
