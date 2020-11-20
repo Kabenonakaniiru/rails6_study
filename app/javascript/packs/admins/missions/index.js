@@ -31,7 +31,7 @@
       });
     }
     $('.edit-row-icon').on('click', function () {
-      // とりあえず切り替えだけの処理
+      // 「編集」列のアイコンをクリックしたときの処理
       var $this = $(this);
       var dataFaI2Svg = $this.find('[data-fa-i2svg]');
       dataFaI2Svg.toggleClass('fa-edit')
