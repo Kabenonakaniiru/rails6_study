@@ -40,8 +40,10 @@ ActiveRecord::Schema.define(version: 2020_11_21_142816) do
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "level", limit: 1, default: 1, null: false
+    t.bigint "parent_area_id"
     t.string "name", limit: 3, null: false
-    t.string "column_name", limit: 6, null: false
+    t.string "column_name", limit: 6
+    t.index ["parent_area_id"], name: "index_areas_on_parent_area_id"
   end
 
   create_table "classifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
