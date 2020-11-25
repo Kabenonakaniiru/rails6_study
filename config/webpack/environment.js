@@ -1,16 +1,4 @@
 const { environment } = require('@rails/webpacker')
-
-// FIXME: 試験的にdart-sassに移行テスト→ダメだったけど一応残しておく
-// const sassLoader = environment.loaders.get('sass')['use'].find(rule => rule['loader'] === 'sass-loader')
-// sassLoader.options = {
-//   ...sassLoader.options,
-//   implementation: require('sass'),
-// }
-
-
-
-
-
 const { VueLoaderPlugin } = require('vue-loader')
 const vue = require('./loaders/vue')
 // FIXME: 一時的に無効に戻した。packnameを指定しての読み込み方を調べること。(タグも変える必要がある)
