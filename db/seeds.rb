@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Classification.create([{ name: '単発' }, { name: '年次' }, { name: '3ヶ月' }, { name: '月次' }, { name: '週次' }, { name: '日次' }])
 Areas.create({
-  # TODO: 実装
+  # TODO: CSVから読み込んで登録するように実装
 })
