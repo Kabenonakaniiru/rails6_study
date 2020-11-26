@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Classification.create([{ name: '単発' }, { name: '年次' }, { name: '3ヶ月' }, { name: '月次' }, { name: '週次' }, { name: '日次' }])
-Areas.create({
-  # TODO: CSVから読み込んで登録するように実装
-})
+
+ActiveRecord::Base.transaction do
+  Classification.insert_all! Classification.initialize_data
+  Area.insert_all! Area.initialize_data
+end
