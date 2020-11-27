@@ -5,7 +5,7 @@ class Admins::MissionsController < ApplicationController
   # TODO: このコントローラはadmin配下に移動すること。nannkamo
 
   def index
-    @areas = Area.where.not(column_name: nil)
+    @mission_count_areas = Area.where.not(column_name: nil)
     @missions = Mission.all.includes(:classification)
   end
 

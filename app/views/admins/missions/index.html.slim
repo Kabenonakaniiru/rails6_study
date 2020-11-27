@@ -84,7 +84,7 @@ h3 任務一覧
           i.fas.fa-edit.edit-row-icon
           = link_to '', admins_mission_find_mission_area_path(mission), class: 'row_get_link d-none'
           = link_to '', admins_mission_mission_area_save_path(mission), method: :post, class: 'row_save_link d-none'
-        - @areas.each do |area|
+        - @mission_count_areas.each do |mission_count_area|
           td.mission-count-area
-            span.mission-count-display-cell = mission[area.column_name]
-            = number_field_tag area.column_name, mission[area.column_name], min: 0, max: 99, class: 'mission-count-editor d-none'
+            span.mission-count-display-cell = mission[mission_count_area.column_name]
+            = number_field_tag mission_count_area.column_name, mission[mission_count_area.column_name], min: 0, max: 99, class: 'mission-count-editor d-none'
