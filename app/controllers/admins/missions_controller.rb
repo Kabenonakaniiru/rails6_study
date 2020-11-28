@@ -5,6 +5,9 @@ class Admins::MissionsController < ApplicationController
   # TODO: このコントローラはadmin配下に移動すること。nannkamo
 
   def index
+    # FIXME: 以下のSQLで全紐づきを取得して、ゴリゴリロジックでなんとかすること(アバウト……)
+    # SELECT * FROM areas parent LEFT OUTER JOIN (SELECT id, name, parent_area_id FROM areas) child ON parent.id = child.parent_area_id WHERE column_name IS NOT NULL;
+    @header_areas = Area.where(column_name: nil)
     @mission_count_areas = Area.where.not(column_name: nil)
     @missions = Mission.all.includes(:classification)
   end
