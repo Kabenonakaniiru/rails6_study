@@ -12,6 +12,7 @@ class Admins::MissionsController < ApplicationController
     parent_sea_areas.each_with_index do |parent_sea_area, i|
       @header_level1_areas.store(parent_sea_area.name, parent_sea_area_counts[i])
     end
+    @total_parent_sea_area_count = parent_sea_area_counts.inject(&:+)
 
     # FIXME: 以下のSQLで全紐づきを取得して、ゴリゴリロジックでなんとかすること(アバウト……)
     header_areas = ActiveRecord::Base.connection.select_all('SELECT id, level, parent_area_id, name, column_name FROM areas parent LEFT OUTER JOIN (SELECT id AS child_id, name AS child_name, parent_area_id AS child_parent_area_id FROM areas) child ON parent.id = child.child_parent_area_id WHERE parent.column_name IS NOT NULL;')
