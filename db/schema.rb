@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_11_21_142816) do
     t.string "column_name", limit: 6
     t.datetime "created_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "current_timestamp(6)" }, null: false
+    t.index ["level", "parent_area_id", "name"], name: "index_areas_on_level_and_parent_area_id_and_name", unique: true
     t.index ["parent_area_id"], name: "index_areas_on_parent_area_id"
   end
 
