@@ -17,8 +17,8 @@ h3 任務一覧
         /  FIXME: 一旦排除した。必要性を精査すること。
         / th scope="col" rowspan=3 備考
         th scope="col" rowspan=3 編集
-        - @header_level1_areas.each do |index, area_data|
-          th scope="col" colspan="#{area_data[:specify_count]}" = area_data[:name]
+        - @header_level1_areas.each do |name, specify_count|
+          th scope="col" colspan="#{specify_count}" = name
       tr
         / 1
         th 1

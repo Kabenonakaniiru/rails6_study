@@ -10,7 +10,7 @@ class Admins::MissionsController < ApplicationController
     parent_sea_area_counts = [6, 5, 5, 5, 5, 5, 5]
     @header_level1_areas = {}
     parent_sea_areas.each_with_index do |parent_sea_area, i|
-      @header_level1_areas.store(i, { name: parent_sea_area.name, specify_count: parent_sea_area_counts[i] })
+      @header_level1_areas.store(parent_sea_area.name, parent_sea_area_counts[i])
     end
 
     # FIXME: 以下のSQLで全紐づきを取得して、ゴリゴリロジックでなんとかすること(アバウト……)
