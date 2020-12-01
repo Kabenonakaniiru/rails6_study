@@ -5,8 +5,20 @@ class Admins::MissionsController < ApplicationController
 
   def index
     # FIXME: 以下のSQLで全紐づきを取得して、ゴリゴリロジックでなんとかすること(アバウト……)
-    @header_areas = ActiveRecord::Base.connection.select_all('SELECT id, level, parent_area_id, name, column_name FROM areas parent LEFT OUTER JOIN (SELECT id AS child_id, name AS child_name, parent_area_id AS child_parent_area_id FROM areas) child ON parent.id = child.child_parent_area_id WHERE parent.column_name IS NOT NULL;')
-    p @header_areas
+    big_sea_areas = Area.where(level: 1)
+    # FIXME: 一旦定義。後でデータからカウントを取るように修正する。
+    # 第一階層の定義を強引に作る
+    big_sea_area_counts = [6, 5, 5, 5, 5, 5, 5]
+    @header_level1_areas = {}
+    big_sea_areas.each_with_index do |big_sea_area, i|
+      @header_level1_areas.store(i, { name: big_sea_area.name, specify_count: big_sea_area_counts[i] })
+    end
+
+    header_areas = ActiveRecord::Base.connection.select_all('SELECT id, level, parent_area_id, name, column_name FROM areas parent LEFT OUTER JOIN (SELECT id AS child_id, name AS child_name, parent_area_id AS child_parent_area_id FROM areas) child ON parent.id = child.child_parent_area_id WHERE parent.column_name IS NOT NULL;')
+    p header_areas
+    header_areas.each do |header_area|
+      p header_area
+    end
     @mission_count_areas = Area.where.not(column_name: nil)
     @missions = Mission.all.includes(:classification)
   end
