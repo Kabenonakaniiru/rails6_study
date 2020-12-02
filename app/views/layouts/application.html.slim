@@ -1,0 +1,24 @@
+doctype html
+html lang="ja"
+  head
+    meta charset="UTF-8"
+    title
+      | 艦隊これくしょん 出撃回数管理ツール(仮)
+      / TODO: 後で定数に切り出して共通化(下のホームリンクも)
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all'
+    script
+      | FontAwesomeConfig = { autoReplaceSvg: "nest"}
+    = javascript_pack_tag 'application'
+    = javascript_pack_tag javascript_path
+    / TODO: 完全に不要と思ったら削除すること
+    / script alert(window.FontAwesome.config.autoReplaceSvg); 
+  body
+    .d-flex.justify-content-center
+      #loading-image.spinner-border.d-none role="status"
+        .sr-only
+          | Loading...
+    .container-fluid
+      = render "layouts/header"
+      = yield
