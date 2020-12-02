@@ -8,18 +8,12 @@ class Admins::MissionsController < ApplicationController
     # FIXME: 一旦定義。後でデータからカウントを取るように修正する。
     # 第一階層の定義を強引に作る
     parent_sea_area_counts = [6, 5, 5, 5, 5, 5, 5]
-    @header_level1_areas = {}
+    @header_parent_areas = {}
     parent_sea_areas.each_with_index do |parent_sea_area, i|
-      @header_level1_areas.store(parent_sea_area.name, parent_sea_area_counts[i])
+      @header_parent_areas.store(parent_sea_area.name, parent_sea_area_counts[i])
     end
     @total_parent_sea_area_count = parent_sea_area_counts.inject(&:+)
-
-    # FIXME: 以下のSQLで全紐づきを取得して、ゴリゴリロジックでなんとかすること(アバウト……)
-    header_areas = ActiveRecord::Base.connection.select_all('SELECT id, level, parent_area_id, name, column_name FROM areas parent LEFT OUTER JOIN (SELECT id AS child_id, name AS child_name, parent_area_id AS child_parent_area_id FROM areas) child ON parent.id = child.child_parent_area_id WHERE parent.column_name IS NOT NULL;')
-    p header_areas
-    header_areas.each do |header_area|
-      p header_area
-    end
+    @header_children_areas = ActiveRecord::Base.connection.select_all('SELECT id, level, parent_area_id, name, column_name FROM areas parent LEFT OUTER JOIN (SELECT id AS child_id, name AS child_name, parent_area_id AS child_parent_area_id FROM areas) child ON parent.id = child.child_parent_area_id WHERE parent.column_name IS NOT NULL;')
     @mission_count_areas = Area.where.not(column_name: nil)
     @missions = Mission.all.includes(:classification)
   end
