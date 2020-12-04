@@ -46,11 +46,15 @@
         .toggleClass('fa-save');
       if (dataFaI2Svg.hasClass('fa-edit')) {
         // TODO: ここに保存時の動作追加
-        toggleRow($icon);
+        var url = $icon.parent().find(".row_save_link").attr('href');
+        commonJsonAjax(url, 'post', {}, function (data) {
+          toggleRow($icon, data);
+        }, function () {
+          // TODO: 実装
+        });
       } else {
         // TODO: ここに編集時の動作追加
         var url = $icon.parent().find(".row_get_link").attr('href');
-        // TODO: 共通化
         commonJsonAjax(url, 'get', {}, function (data) {
           toggleRow($icon, data);
         }, function () {
