@@ -47,7 +47,17 @@
       if (dataFaI2Svg.hasClass('fa-edit')) {
         // TODO: ここに保存時の動作追加
         var url = $icon.parent().find(".row_save_link").attr('href');
+
+        var sendRowData = {};
+        var row = $icon.parent().parent();
+        row.children('.mission-count-area').each(function (index, td) {
+          var $td = $(td);
+          $td.find('.mission-count-editor').each(function (index, editor) {
+            console.log(editor.dataset.colname + ":" + editor.value);
+          });
+        });
         commonJsonAjax(url, 'post', {}, function (data) {
+          // TODO: ここにサーバから取得した最新の情報を反映する処理の追加が必要になる。
           toggleRow($icon, data);
         }, function () {
           // TODO: 実装
