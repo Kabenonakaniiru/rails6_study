@@ -44,7 +44,6 @@ const { data } = require("jquery");
         var $td = $(td);
         // TODO: ここにサーバから取得した最新の情報を反映する処理の追加が必要になる。
         // TODO: 列が「どのカラムに対応するか」どこかで保持している必要がある。data-"カラム名"のようにするか？
-        // data
         $td.find('.mission-count-display-cell').toggleClass('d-none');
         $td.find('.mission-count-editor').toggleClass('d-none');
       });
@@ -56,20 +55,17 @@ const { data } = require("jquery");
       dataFaI2Svg.toggleClass('fa-edit')
         .toggleClass('fa-save');
       if (dataFaI2Svg.hasClass('fa-edit')) {
-        // TODO: ここに保存時の動作追加
         var url = $icon.parent().find(".row_save_link").attr('href');
 
-        let sendRowData = new Map();
+        var sendRowData = {};
         var row = $icon.parent().parent();
         row.children('.mission-count-area').each(function (index, td) {
           var $td = $(td);
           $td.find('.mission-count-editor').each(function (index, editor) {
-            sendRowData.set(editor.dataset.colname, editor.value);
-            console.log(editor.dataset.colname + ":" + editor.value);
+            sendRowData[editor.dataset.colname] = editor.value;
           });
         });
-        console.log("size:" + sendRowData.size);
-        commonJsonAjax(url, 'post', JSON.stringify(sendRowData), function (data) {
+        commonJsonAjax(url, 'post', sendRowData, function (data) {
           // TODO: ここにサーバから取得した最新の情報を反映する処理の追加が必要になる。
           toggleRow($icon, data);
         }, function () {
