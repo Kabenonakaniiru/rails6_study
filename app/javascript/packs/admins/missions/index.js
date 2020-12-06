@@ -1,3 +1,5 @@
+const { data } = require("jquery");
+
 (function ($) {
   $(function () {
     // FIXME: 関数名は適当。後で共通的なハンドリング用のクラスなどを作ること。(ただし、Vue.jsへの置き換えを行ってから)
@@ -11,8 +13,17 @@
           data: dataMap,
           dataType: 'json',
           cache: false,
-          beforeSend: function (xhr, setting) {
+          beforeSend: function (jqXHR, options) {
             $loadingImage.removeClass('d-none');
+            // TODO: 暫定対応。本来は、rails/ujsで常に埋め込まれているべき。
+            var token;
+            console.log(options)
+            if (!options.crossDomain) {
+              token = $('meta[name="csrf-token"]').attr('content');
+              if (token) {
+                return jqXHR.setRequestHeader('X-CSRF-Token', token);
+              }
+            }
           }
         }).done(function (data) {
           successFunc(data);
