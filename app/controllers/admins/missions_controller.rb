@@ -41,6 +41,15 @@ class Admins::MissionsController < ApplicationController
     p 'mission_area_save_通った'
     # TODO: 多分render jsonしないといけない
     'test:mission_area_save'
+    # TODO: ここ、パラメータを"id"に出来れば、target_missionを使えるようになるはずなので、なんとかしたい。
+    @mission = Mission.find(params[:mission_id])
+    ActiveRecord::Base.transaction do
+      # TODO: ModelViewへの切り出し。
+      # TODO: Validationの実装
+      # TODO: 保存ロジックのModelへの移動。
+      @mission.update!(target_mission_params)
+    end
+    render json: Mission.find(params[:mission_id])
   end
 
   private
@@ -63,6 +72,10 @@ class Admins::MissionsController < ApplicationController
         :limited,
         :url,
         :note)
+    end
+
+    def target_mission_params
+      params.permit(%i[n1_1 n1_2 n1_3 n1_4 n1_5 n1_6 n2_1 n2_2 n2_3 n2_4 n2_5 n3_1 n3_2 n3_3 n3_4 n3_5 n4_1 n4_2 n4_3 n4_4 n4_5 n5_1 n5_2 n5_3 n5_4 n5_5 n6_1 n6_2 n6_3 n6_4 n6_5 n7_1 n7_2_1 n7_2_2 n7_3_1 n7_3_2])
     end
 
     def do_transaction(manipulate, success_url, error_action, target_name)
