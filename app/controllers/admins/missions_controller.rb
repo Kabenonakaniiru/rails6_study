@@ -37,10 +37,6 @@ class Admins::MissionsController < ApplicationController
   end
 
   def mission_area_save
-    # TODO: 実装
-    p 'mission_area_save_通った'
-    # TODO: 多分render jsonしないといけない
-    'test:mission_area_save'
     # TODO: ここ、パラメータを"id"に出来れば、target_missionを使えるようになるはずなので、なんとかしたい。
     @mission = Mission.find(params[:mission_id])
     ActiveRecord::Base.transaction do
