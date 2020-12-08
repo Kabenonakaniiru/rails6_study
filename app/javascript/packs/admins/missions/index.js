@@ -47,8 +47,7 @@ const { data } = require("jquery");
           console.log(data[$editor.data('colname')]);
           var value = data[$editor.data('colname')];
           $editor.val(value);
-          var displayCell = $td.find('.mission-count-display-cell');
-          displayCell.text(value);
+          $td.find('.mission-count-display-cell').text(value);
         }
 
         $td.find('.mission-count-display-cell').toggleClass('d-none');
