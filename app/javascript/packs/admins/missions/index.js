@@ -34,7 +34,7 @@ const { data } = require("jquery");
           $loadingImage.addClass('d-none');
         });
     };
-    // TODO: 後で適切な引数名に変更すること。更新とそうでないときの処理を分けること。
+
     var toggleRow = function ($icon, data, requireUpdateDisplay) {
       // テキストフィールドとラベル表示を切り替える FIXME: あとでいいコメント考えてくだしあ
       // this = i → row取得→配下tdの特定クラスを切りかえる
