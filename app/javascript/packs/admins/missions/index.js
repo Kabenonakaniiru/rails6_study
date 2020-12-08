@@ -35,15 +35,22 @@ const { data } = require("jquery");
         });
     };
     // TODO: 後で適切な引数名に変更すること。更新とそうでないときの処理を分けること。
-    var toggleRow = function ($icon, data) {
+    var toggleRow = function ($icon, data, requireUpdateDisplay) {
       // テキストフィールドとラベル表示を切り替える FIXME: あとでいいコメント考えてくだしあ
       // this = i → row取得→配下tdの特定クラスを切りかえる
       var row = $icon.parent().parent();
       // edit→saveアイコンに切り替えるとき、行配下のセルを編集可能にする。
       row.children('.mission-count-area').each(function (index, td) {
         var $td = $(td);
-        // TODO: ここにサーバから取得した最新の情報を反映する処理の追加が必要になる。
-        // TODO: 列が「どのカラムに対応するか」どこかで保持している必要がある。data-"カラム名"のようにするか？
+        if (requireUpdateDisplay) {
+          var $editor = $td.find('.mission-count-editor');
+          console.log(data[$editor.data('colname')]);
+          var value = data[$editor.data('colname')];
+          $editor.val(value);
+          var displayCell = $td.find('.mission-count-display-cell');
+          displayCell.text(value);
+        }
+
         $td.find('.mission-count-display-cell').toggleClass('d-none');
         $td.find('.mission-count-editor').toggleClass('d-none');
       });
@@ -66,8 +73,7 @@ const { data } = require("jquery");
           });
         });
         commonJsonAjax(url, 'post', sendRowData, function (data) {
-          // TODO: ここにサーバから取得した最新の情報を反映する処理の追加が必要になる。
-          toggleRow($icon, data);
+          toggleRow($icon, data, true);
         }, function () {
           // TODO: 実装
         });
@@ -75,7 +81,7 @@ const { data } = require("jquery");
         // TODO: ここに編集時の動作追加
         var url = $icon.parent().find(".row_get_link").attr('href');
         commonJsonAjax(url, 'get', {}, function (data) {
-          toggleRow($icon, data);
+          toggleRow($icon, data, false);
         }, function () {
           // TODO: 実装
         });
