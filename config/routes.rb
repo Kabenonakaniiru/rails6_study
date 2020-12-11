@@ -19,5 +19,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # TODO: エラー頁用のルーティングを追加する。
+  get '*path', controller: 'application', action: 'render_404'
 end
