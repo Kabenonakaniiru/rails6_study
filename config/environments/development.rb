@@ -26,18 +26,30 @@ Rails.application.configure do
     # }
     # config.cache_store = :memory_store
     # see https://railsguides.jp/caching_with_rails.html
-    config.cache_store = :redis_cache_store, {
-      url: ENV['REDIS_URL'],
-      connect_timeout:    30,  # Defaults to 20 seconds
-      read_timeout:       0.2, # Defaults to 1 second
-      write_timeout:      0.2, # Defaults to 1 second
-      reconnect_attempts: 1,   # Defaults to 0
-      error_handler: -> (method:, returning:, exception:) {
-        # Report errors to Sentry as warnings
-        Raven.capture_exception exception, level: 'warning',
-          tags: { method: method, returning: returning }
-      }
-    }
+    # FIXME: 検証中
+    config.cache_store = :redis_cache_store, { driver: :hiredis, url: 'redis://localhost:6379/0' }
+    # config.cache_store = :redis_cache_store, driver: :hiredis
+    # namespace: 'myapp-cache', compress: true,
+    # url: %w[
+    #   redis://myapp-cache-1:6379/0
+    #   redis://myapp-cache-1:6380/0
+    #   redis://myapp-cache-2:6379/0
+    #   redis://myapp-cache-2:6380/0
+    #   redis://myapp-cache-3:6379/0
+    #   redis://myapp-cache-3:6380/0
+    # ]
+    # config.cache_store = :redis_cache_store, {
+    #   url: ENV['REDIS_URL'],
+    #   connect_timeout:    30,  # Defaults to 20 seconds
+    #   read_timeout:       0.2, # Defaults to 1 second
+    #   write_timeout:      0.2, # Defaults to 1 second
+    #   reconnect_attempts: 1,   # Defaults to 0
+    #   error_handler: -> (method:, returning:, exception:) {
+    #     # Report errors to Sentry as warnings
+    #     Raven.capture_exception exception, level: 'warning',
+    #       tags: { method: method, returning: returning }
+    #   }
+    # }
   else
     config.action_controller.perform_caching = false
 

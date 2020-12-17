@@ -16,10 +16,12 @@ gem 'webpacker', '~> 4.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+# gem 'redis', '~> 4.0'
 # see https://guides.rubyonrails.org/caching_with_rails.html#cache-stores
 # gem 'redis-rails'
-gem 'hiredis'
+# gem 'hiredis'
+# FIXME: 検証中
+gem 'redis', '>= 3.2.0', require: ['redis', 'redis/connection/hiredis']
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'listen'
