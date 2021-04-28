@@ -4,6 +4,7 @@
 require:
   - rubocop-packaging
   - rubocop-performance
+  - rubocop-minitest
   - rubocop-rails
 
 AllCops:

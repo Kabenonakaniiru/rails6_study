@@ -46,7 +46,7 @@ group :development do
   gem 'rubocop-packaging', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
+  gem 'rubocop-minitest', require: false # https://github.com/rubocop/rubocop-minitest
   gem 'brakeman', require: false
   # N+1検知用(https://github.com/flyerhzm/bullet)
   gem 'bullet'
