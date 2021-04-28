@@ -55,14 +55,15 @@ const { data } = require("jquery");
       });
     }
     $('.edit-row-icon').on('click', function () {
-      // 「編集」列のアイコンをクリックしたときの処理
+      // 「編集」列のアイコンをクリックしたときの処理(保存処理)
       var $icon = $(this);
       var dataFaI2Svg = $icon.find('[data-fa-i2svg]');
-      dataFaI2Svg.toggleClass('fa-edit')
-        .toggleClass('fa-save');
-      if (dataFaI2Svg.hasClass('fa-edit')) {
-        var url = $icon.parent().find(".row_save_link").attr('href');
 
+      if (dataFaI2Svg.hasClass('fa-save')) {
+        if (!confirm('更新しますか？')) return;
+        // アイコンを切り替える。
+        dataFaI2Svg.toggleClass('fa-edit');
+        var url = $icon.parent().find(".row_save_link").attr('href');
         var sendRowData = {};
         var row = $icon.parent().parent();
         row.children('.mission-count-area').each(function (index, td) {
@@ -77,6 +78,8 @@ const { data } = require("jquery");
           // TODO: 実装
         });
       } else {
+        // アイコンを切り替える。
+        dataFaI2Svg.toggleClass('fa-save');
         // TODO: ここに編集時の動作追加
         var url = $icon.parent().find(".row_get_link").attr('href');
         commonJsonAjax(url, 'get', {}, function (data) {
