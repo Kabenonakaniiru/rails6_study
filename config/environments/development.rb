@@ -6,7 +6,7 @@ Rails.application.configure do
     Bullet.alert         = true
     Bullet.bullet_logger = true
     Bullet.console       = true
-  # Bullet.growl         = true
+    # Bullet.growl         = true
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
   end
@@ -109,7 +109,6 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   # Action Mailer URL
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :sendmail
@@ -126,7 +125,4 @@ Rails.application.configure do
   #   authentication:       'plain',
   #   enable_starttls_auto: true
   # }
-  Raven.configure do |config|
-    config.dsn = ENV['RAVEN_DSN']
-  end
 end
